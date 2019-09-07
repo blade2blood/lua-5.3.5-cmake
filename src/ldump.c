@@ -200,7 +200,7 @@ static void DumpHeader (DumpState *D) {
 /*
 ** dump Lua function as precompiled chunk
 */
-LUA_API int luaU_dump(lua_State *L, const Proto *f, lua_Writer w, void *data,
+int luaU_dump(lua_State *L, const Proto *f, lua_Writer w, void *data,
               int strip) {
   DumpState D;
   D.L = L;
