@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 3.6)
 
 project(Lua5)
 
-option(LUA_USE_DLL " Lua Use dll" TRUE)
+if (WIN32)
+	option(LUA_USE_DLL "Lua Use dll" TRUE)
+else()
+	option(LUA_USE_DLL "Lua Use dll" FALSE)
+endif()
 
 set(LUA_DOC_PATH ./doc)
 
@@ -61,3 +65,8 @@ endif()
 add_executable(lua5 ${LUA_MAIN_SRC})
 
 target_link_libraries(lua5 lua5dll)
+if (UNIX)
+	target_link_libraries(lua5 m)
+endif()
+
+
